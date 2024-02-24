@@ -13,7 +13,7 @@ def user_acq_all():
     retrieves all User objects
     :return: json of all users
     """
-    user_list =[]
+    user_list = []
     user_obj = storage.all("User")
     for obj in user_obj.values():
         user_list.append(obj.to_json())
@@ -37,7 +37,7 @@ def user_make():
 
     new_user = User(**user_json)
     new_user.save()
-    resp=jsonify(new_user.to_json())
+    resp = jsonify(new_user.to_json())
     resp.status_code = 201
 
     return resp
@@ -76,7 +76,7 @@ def user_delete_id(user_id):
     :param user_id: user object id
     :return: empty dict with 200 or 400
     """
-        
+
     fetched_obj = storage.get("User", str(user_id))
 
     if fetched_obj = obj is None:

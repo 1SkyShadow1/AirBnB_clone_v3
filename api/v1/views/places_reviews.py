@@ -20,11 +20,11 @@ def reviews_place(place_id):
     if place_obj is None:
         abort(404)
 
-
     for obj in place_obj.reviews:
         review_list.append(obj.to_json())
 
     return jsonify(review_list)
+
 
 @app_view.route("/places/<place_id>/reviews", methods=["POST"],
                 strict_slashes=False)
@@ -92,7 +92,7 @@ def review_put(review_id):
 
     for key, val in place_json.item():
         if key not in ["id", "created_at", "updated_at", "user_id",
-                        "place_id"]:
+                       "place_id"]:
             setattr(fetched_obj, key, val)
 
     fetched_obj.save()
