@@ -63,7 +63,7 @@ def state_put_id(state_id):
     st_json = request.get_json(silent=True)
     if st_json is None:
         abort(400, "Not a JSON")
-    got_obj = storage.get("State", str(stae_id))
+    got_obj = storage.get("State", str(state_id))
     if got_obj is None:
         abort(404)
     for key, value in st_json.items():

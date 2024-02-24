@@ -26,8 +26,8 @@ def reviews_place(place_id):
     return jsonify(review_list)
 
 
-@app_view.route("/places/<place_id>/reviews", methods=["POST"],
-                strict_slashes=False)
+@app_views.route("/places/<place_id>/reviews", methods=["POST"],
+                 strict_slashes=False)
 def review_make(place_id):
     """
     create Review route

@@ -4,7 +4,7 @@ index
 """
 
 from flask import jsonify
-from api.v1.vies import app_views
+from api.v1.views import app_views
 
 from models import storage
 
@@ -25,7 +25,7 @@ def status():
     return resp
 
 
-@app_vies.route("/stats", methods=['GET'], strict_slashes=False)
+@app_views.route("/stats", methods=['GET'], strict_slashes=False)
 def stats():
     """
     stats of all objs route

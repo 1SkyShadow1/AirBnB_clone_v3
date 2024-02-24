@@ -10,7 +10,7 @@ from models.amenity import Amenity
 from api.v1.views import app_views, storage
 
 
-@app_views.route("/amenities", merhods["Get"],
+@app_views.route("/amenities", methods=["Get"],
                  strict_slashes=False)
 def amenity_acq_all():
     """
@@ -55,10 +55,10 @@ def amenity_id(amenity_id):
 
     got_obj = storage.get("Amenity", str(amenity_id))
 
-    if got_obj id None:
+    if got_obj is None:
         abort(404)
 
-    return jsonify(fetched_obj.to_json())
+    return jsonify(got_obj.to_json())
 
 
 @app_views.route("/amenities/<amenity_id>", methods=["PUT"],
@@ -76,7 +76,7 @@ def amenity_put_id(amenity_id):
         abort(400)
     for key, value in amenity_json.items():
         setattr(got_obj, key, value)
-    got_ob.save()
+    got_obj.save()
     return jsonify(got_obj.to_json())
 
 
