@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-route for 
+route for
 states objects
 """
 from flask import jsonify, request, abort
@@ -12,10 +12,10 @@ from api.v1.views import app_views, storage
                  strict_slashes=False)
 def city_state(state_id):
     """
-    gets a city object 
+    gets a city object
     from a given state
     """
-    ct_list=[]
+    ct_list = []
     st_obj = storage.get("State", state_id)
 
     if st_obj is None:
@@ -30,7 +30,7 @@ def city_state(state_id):
                  strict_slashes=False)
 def city_make(state_id):
     """
-    Will create a route for 
+    Will create a route for
     a city
     """
     ct_json = request.get_json(silent=True)
@@ -52,11 +52,12 @@ def city_make(state_id):
 
     return response
 
+
 @app_views.route("/cities/<city_id>", methods=["GET"],
                  strict_slashes=False)
 def city_id(city_id):
     """
-    Will get a city 
+    Will get a city
     object
     """
 
@@ -68,7 +69,7 @@ def city_id(city_id):
     return jsonify(got_obj.to_json())
 
 
-@app_views.route("cities/<city_id>", methods=["PUT"], 
+@app_views.route("cities/<city_id>", methods=["PUT"],
                  strict_slashes=False)
 def city_put(city_id):
     """
@@ -87,11 +88,12 @@ def city_put(city_id):
     got_obj.save()
     return jsonify(got_obj.to_json())
 
+
 @app_views.route("/cities/<city_id>", methods=["DELETE"],
                  strict_slashes=False)
 def city_delete_id(city_id):
     """
-    Will deltes a city using 
+    Will deltes a city using
     Id
     """
     got_bj = storage.get("City", str(city_id))

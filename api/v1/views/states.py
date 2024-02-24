@@ -19,6 +19,7 @@ def state_acq_all():
 
     return jsonify(state_ls)
 
+
 @app_views.route("/states", methods=["POST"], strict_slashes=False)
 def state_make():
     """
@@ -42,7 +43,7 @@ def state_make():
 @app_views.route("/states/<state_id>", methods=["GET"], strict_slashes=False)
 def state_get_id(state_id):
     """
-    Will get a specific object id for 
+    Will get a specific object id for
     a state
     """
     got_obj = storage.get("State", str(state_id))

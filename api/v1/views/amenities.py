@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Handles Amenity 
+Handles Amenity
 objects and operations
 """
 
@@ -10,11 +10,11 @@ from models.amenity import Amenity
 from api.v1.views import app_views, storage
 
 
-@app_views.route("/amenities", merhods["Get"], 
+@app_views.route("/amenities", merhods["Get"],
                  strict_slashes=False)
 def amenity_acq_all():
     """
-    Will get Amenity 
+    Will get Amenity
     objects
     """
     amenity_list = []
@@ -24,7 +24,8 @@ def amenity_acq_all():
 
     return jsonify(amenity_list)
 
-@app_views.route("/amenities", methods=["POST"], 
+
+@app_views.route("/amenities", methods=["POST"],
                  strict_slashes=False)
 def amenity_make():
     """
@@ -80,7 +81,7 @@ def amenity_put_id(amenity_id):
 
 
 @app_views.route("/amenities/<amenity_id>", methods=["DELETE"],
-                strict_slashes=False)
+                 strict_slashes=False)
 def amenity_delete_id(amenity_id):
     """
     Will delete an Amenity
