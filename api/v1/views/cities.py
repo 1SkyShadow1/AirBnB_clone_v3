@@ -76,15 +76,15 @@ def city_put(city_id):
     Will update a city object
     using Id
     """
-    ct_json = request.get_json(sitent=True)
+    ct_json = request.get_json(silent=True)
     if ct_json is None:
         abort(400, "Not a JSON")
     got_obj = storage.get("City", str(city_id))
     if got_obj is None:
         abort(404)
-    for key, value is ct_json.items():
+    for key, value in ct_json.items():
         if key not in ["id", "created_at", "updated_at", "state_id"]:
-            setAttr(got_obj, key, value)
+            setattr(got_obj, key, value)
     got_obj.save()
     return jsonify(got_obj.to_json())
 
@@ -96,7 +96,7 @@ def city_delete_id(city_id):
     Will deltes a city using
     Id
     """
-    got_bj = storage.get("City", str(city_id))
+    got_obj = storage.get("City", str(city_id))
 
     if got_obj is None:
         abort(404)

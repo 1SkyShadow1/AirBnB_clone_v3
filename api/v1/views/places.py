@@ -22,8 +22,8 @@ def place_city(city_id):
     return jsonify(place_list)
 
 
-@app_views.route("/cities/<city_id>/places", methods=["POST"]
-                strict_slashes=False)
+@app_views.route("/cities/<city_id>/places", methods=["POST"],
+                 strict_slashes=False)
 def place_make(city_id):
     """
     create place
@@ -34,10 +34,10 @@ def place_make(city_id):
         abort(400, 'Not a JSON')
     if not storage.get("User", place_json["user_id"]):
         abort(404)
-    if not storage_get("City", city_id):
+    if not storage.get("City", city_id):
         abort(404)
     if "user_id" not in place_json:
-        abort(400. 'Missing user_id')
+        abort(400, 'Missing user_id')
     if "name" not in place_json:
         abort(400, 'Missing name')
 

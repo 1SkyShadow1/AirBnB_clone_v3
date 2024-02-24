@@ -27,7 +27,7 @@ def reviews_place(place_id):
 
 
 @app_views.route("/places/<place_id>/reviews", methods=["POST"],
-                strict_slashes=False)
+                 strict_slashes=False)
 def review_make(place_id):
     """
     create Review route
