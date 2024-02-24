@@ -22,7 +22,7 @@ def place_city(city_id):
     return jsonify(place_list)
 
 
-@app_vies.route("/cities/<city_id>/places", methods=["POST"]
+@app_views.route("/cities/<city_id>/places", methods=["POST"]
                 strict_slashes=False)
 def place_make(city_id):
     """

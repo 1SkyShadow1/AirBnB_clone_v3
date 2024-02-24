@@ -44,6 +44,22 @@ def user_make():
 
 
 @app_views.route("/users/<user_id>", methods=["GET"], strict_slashes=False)
+def user_id(user_id):
+    """
+    gets a specific user object
+    :param user_id: user obj id
+    :return: user obj with id or error
+    """
+
+    fetched_obj = storage.get("User", str(user_id))
+
+    if fetched_obj is None:
+        abort(404)
+
+    return jsonify(fetched_obj.to_json())
+
+
+@app_views.route("/users/<user_id>", methods=["GET"], strict_slashes=False)
 def user_put(user_id):
     """
     updates specific User object by ID
