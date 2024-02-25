@@ -36,7 +36,8 @@ def stats():
         "amenities": storage.count("Amenity"),
         "cities": storage.count("City"),
         "places": storage.count("Place"),
-        "Reviews": storage.count("State"),
+        "reviews": storage.count("Review"),
+        "states": storage.count("State"),
         "users": storage.count("User"),
     }
 
