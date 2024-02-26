@@ -1,26 +1,39 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """ holds class City"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
+import os
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
-
+str_type = os.environ.get('HBNB_TYPE_STORAGE')
 
 class City(BaseModel, Base):
     """Representation of city """
-    if models.storage_t == "db":
+    if str_type == "db":
         __tablename__ = 'cities'
-        city_id = Column(String(60), primary_key=True, nullable=False)
+        id = Column(String(60), primary_key=True, nullable=False)
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
         name = Column(String(128), nullable=False)
         places = relationship("Place", backref="cities")
     else:
-        city_id = "" 
+        id = ""
         state_id = ""
         name = ""
 
-    def __init__(self, *args, **kwargs):
-        """initializes city"""
-        super().__init__(*args, **kwargs)
+    if str_type != 'db':
+        @property
+        def places(self):
+            """
+            gets places
+            """
+            all_the_places = models.storage.all("Place")
+
+            res = []
+
+            for ob in  all_the_places.values():
+                if syr(ob.city_id) == str(self.id):
+                    res.append(ob)
+
+            return res

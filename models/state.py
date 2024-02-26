@@ -13,9 +13,11 @@ class State(BaseModel, Base):
     """Representation of state """
     if models.storage_t == "db":
         __tablename__ = 'states'
+        id = Column(String(60), primary_key=True, nullable=False)
         name = Column(String(128), nullable=False)
         cities = relationship("City", backref="state")
     else:
+        id = ""
         name = ""
 
     def __init__(self, *args, **kwargs):
