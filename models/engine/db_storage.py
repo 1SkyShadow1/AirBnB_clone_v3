@@ -45,7 +45,7 @@ class DBStorage:
         if cls:
             object_class = self.__session.query(self.Classes.get(cls)).all()
             for i in object_class:
-                key = str(item.__class__.__name__) + "." +str(i.id)
+                key = "{}.{}".format(type(i).__name__, i.id)
                 my_dict[key] = i
             return my_dict
         for cls_name in self.Classes:
@@ -69,7 +69,7 @@ class DBStorage:
         my_classes = self.all(cls)
 
         for ob in my_classes.values():
-            if id == str(ob,id):
+            if id == ob.id:
                 return ob
         return None
 
