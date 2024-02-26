@@ -13,12 +13,10 @@ class City(BaseModel, Base):
     """Representation of city """
     if str_type == "db":
         __tablename__ = 'cities'
-        id = Column(String(60), primary_key=True, nullable=False)
+        name = Column(String(128), nullable=False) 
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
-        name = Column(String(128), nullable=False)
         places = relationship("Place", backref="cities")
     else:
-        id = ""
         state_id = ""
         name = ""
 
@@ -33,7 +31,7 @@ class City(BaseModel, Base):
             res = []
 
             for ob in  all_the_places.values():
-                if syr(ob.city_id) == str(self.id):
+                if str(ob.city_id) == str(self.id):
                     res.append(ob)
 
             return res

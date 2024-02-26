@@ -3,15 +3,15 @@
 import models
 from models.base_model import BaseModel, Base
 from models.city import City
-from os import getenv
+import os
 import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column,Integer, String, Float
 from sqlalchemy.orm import relationship
-
+str_type = os.environ.get('HBNB_TYPE_STORAGE')
 
 class State(BaseModel, Base):
     """Representation of state """
-    if models.storage_t == "db":
+    if str_type == "db":
         __tablename__ = 'states'
         id = Column(String(60), primary_key=True, nullable=False)
         name = Column(String(128), nullable=False)

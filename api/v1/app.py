@@ -7,7 +7,8 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from os import getenv
 
-#from api.v1.views import app_views
+from api.v1.views import app_views
+
 from api.v1.views.index import *
 from api.v1.views.amenities import *
 from api.v1.views.places import *
