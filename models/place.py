@@ -5,7 +5,8 @@ from models.base_model import BaseModel, Base
 import os
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table,\
+        MetaData, Table, ForeignKey
 from sqlalchemy.orm import backref
 from sqlalchemy.orm import relationship
 
@@ -28,7 +29,6 @@ class Place(BaseModel, Base):
     """Representation of Place """
     if str_type == 'db':
         __tablename__ = 'places'
-        id = Column(String(60), primary_key=True, nullable=False)
         city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
         user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
         name = Column(String(128), nullable=False)
@@ -44,7 +44,6 @@ class Place(BaseModel, Base):
                                  backref="place_amenities",
                                  viewonly=False)
     else:
-        id=""
         city_id = ""
         user_id = ""
         name = ""
