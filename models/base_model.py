@@ -11,7 +11,7 @@ import sqlalchemy
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from uuid import uuid4, UUID
- 
+
 str_type = os.environ.get('HBNB_TYPE_STORAGE')
 
 if str_type == "db":
@@ -25,9 +25,9 @@ class BaseModel:
     """The BaseModel class from which future classes will be derived"""
     if str_type == "db":
         id = Column(String(60), primary_key=True)
-        created_at = Column(DateTime, nullable=False, 
+        created_at = Column(DateTime, nullable=False,
                             default=datetime.utcnow)
-        updated_at = Column(DateTime, nullable=False, 
+        updated_at = Column(DateTime, nullable=False,
                             default=datetime.utcnow)
 
     def __init__(self, *args, **kwargs):
@@ -35,7 +35,7 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 setattr(self, key, value)
-            
+
     def __is_serializable(self, obj):
         """
         Will caheck if obj is serializeable
@@ -65,7 +65,7 @@ class BaseModel:
 
     def to_json(self):
         """
-        will show representation of self 
+        will show representation of self
         in json
         """
         basemodel_dict = {}
