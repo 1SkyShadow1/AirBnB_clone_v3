@@ -2,6 +2,10 @@
 """
 This module contains Flask views for 
 index-related routes
+
+It includes two routes:
+    - /status: Returns a JSON response indicating the status
+    - /stats: Return a Json response containing statistics for objects
 """
 
 from flask import jsonify
@@ -13,7 +17,9 @@ from models import storage
 def status():
     """
     status route
-    :return: response with json
+
+    Return: 
+        Response: JSON response indicating the status
     """
     data = {
             "status": "OK"
@@ -28,8 +34,10 @@ def status():
 @app_views.route("/stats", methods=['GET'], strict_slashes=False)
 def stats():
     """
-    stats of all objs route
-    :return: json of all objs
+    Stats route
+
+    Return: 
+        Response: JSON response  of all objs
     """
     data = {
         "amenities": storage.count("Amenity"),
