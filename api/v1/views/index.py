@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module contains Flask views for 
+This module contains Flask views for
 index-related routes
 
 It includes two routes:
@@ -18,7 +18,7 @@ def status():
     """
     status route
 
-    Return: 
+    Return:
         Response: JSON response indicating the status
     """
     data = {
@@ -36,7 +36,7 @@ def stats():
     """
     Stats route
 
-    Return: 
+    Return:
         Response: JSON response  of all objs
     """
     data = {
