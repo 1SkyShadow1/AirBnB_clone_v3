@@ -14,7 +14,7 @@ from uuid import uuid4, UUID
  
 str_type = os.environ.get('HBNB_TYPE_STORAGE')
 
-if models.storage_t == "db":
+if str_type == "db":
     Base = declarative_base()
 else:
     class Base:
@@ -23,7 +23,7 @@ else:
 
 class BaseModel:
     """The BaseModel class from which future classes will be derived"""
-    if models.storage_t == "db":
+    if str_type == "db":
         id = Column(String(60), primary_key=True)
         created_at = Column(DateTime, nullable=False, 
                             default=datetime.utcnow)

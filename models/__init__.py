@@ -7,17 +7,18 @@ from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
-from models.review import Revie
+from models.review import Review
 from models.state import State
-from modles.user import User
+from models.user import User
 
 
-storage_t = getenv("HBNB_TYPE_STORAGE")
-
-if storage_t == "db":
-    from models.engine.db_storage import DBStorage
-    storage = DBStorage()
+if os.environ.get("HBNB_TYPE_STORAGE") == "db":
+    from models.engine import db_storage
+    Classes = db_storage.DBStorage.Classes
+    storage = db_storage.DBStorage()
 else:
-    from models.engine.file_storage import FileStorage
-    storage = FileStorage()
+    from models.engine import file_storage
+    Classes = file_storage.DBStorage.Classes
+    storage = file_storage.FileStorage()
+
 storage.reload()

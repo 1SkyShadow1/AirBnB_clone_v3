@@ -2,15 +2,14 @@
 """ holds class User"""
 import models
 from models.base_model import BaseModel, Base
-from os import getenv
-import sqlalchemy
-from sqlalchemy import Column, String
+import os
+from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.orm import relationship
-
+str_type = os.environ.get("HBNB_TYPE_STORAGE")
 
 class User(BaseModel, Base):
     """Representation of a user """
-    if models.storage_t == 'db':
+    if str_type == 'db':
         __tablename__ = 'users'
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
@@ -27,3 +26,19 @@ class User(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes user"""
         super().__init__(*args, **kwargs)
+
+    @property
+    def password(self):
+        """
+        A password getter
+        Return: Password
+        """
+        return self.__dict__.get("password")
+
+    @password.setter
+    def password(self, passwoed):
+        """
+        Passwoord setter
+        Return: nothing
+        """
+        self.__dict__["password"] = md5(password.encode('utf-8')).hexidigest()
