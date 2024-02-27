@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-app
+Main application module for Flask app
 """
 
 from flask import Flask, jsonify
@@ -21,7 +21,7 @@ app.register_blueprint(app_views)
 @app.teardown_appcontext
 def teardown(exception):
     """
-    teardown function
+    teardown function to close the database connection
     """
     storage.close()
 
