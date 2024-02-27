@@ -40,7 +40,7 @@ class FileStorage:
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         if obj is not None:
-            base_model_id = f"{},{}".format(type(obj), obj.id)
+            base_model_id = "{},{}".format(type(obj), obj.id)
             FileStorage.__objects[base_model_id] = obj
 
     def get(self, cls, id):
