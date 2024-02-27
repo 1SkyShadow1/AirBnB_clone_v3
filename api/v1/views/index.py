@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-index
+This module contains Flask views for 
+index-related routes
 """
 
 from flask import jsonify
